@@ -6,6 +6,8 @@
 #include <cstdlib>
 #include "PlayField.h"
 
+/// Степанов М. О. РИ-280017
+
 PlayField::PlayField() {
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)
