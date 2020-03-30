@@ -2,6 +2,8 @@
 #include "TreeNode.h"
 #include "PlayField.h"
 
+/// Степанов М. О. РИ-280017
+
 void inspectTree(TreeNode& node, int (&results)[3]) {
     if (node.isTerminal()) {
         switch (node.value()) {
