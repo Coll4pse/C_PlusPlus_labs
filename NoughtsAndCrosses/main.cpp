@@ -1,20 +1,21 @@
 #include <iostream>
 #include "TreeNode.h"
 #include "PlayField.h"
+#include "Score.h"
 
 /// Степанов М. О. РИ-280017
 
-void inspectTree(TreeNode& node, int (&results)[3]) {
+void inspectTree(TreeNode& node, Score &score) {
     if (node.isTerminal()) {
-        switch (node.value()) {
+        switch (node.value().checkFieldStatus()) {
             case PlayField::fsCrossesWin:
-                results[0]++;
+                score.CrossesWin++;
                 break;
             case PlayField::fsNoughtsWin:
-                results[1]++;
+                score.NoughtsWin++;
                 break;
             case PlayField::fsDraw:
-                results[2]++;
+                score.Draws++;
                 break;
             default:
                 assert(false);
@@ -22,37 +23,47 @@ void inspectTree(TreeNode& node, int (&results)[3]) {
         return;
     }
 
-    auto emptyPoses = node.getEmptyCells();
+    auto emptyPoses = node.value().getEmptyCells();
 
     for (int i = 0; i < emptyPoses.size(); i++)
     {
-        node.addChild(*(emptyPoses.at(i)));
-        inspectTree((node[i]), results);
+        TreeNode child = TreeNode(&node, node.value().makeMove(emptyPoses[i]));
+        node.addChild(&child);
+        inspectTree(node[i], score);
     }
+}
+
+void printPlayField(PlayField::CellPos pos, Score score){
+    std::cout << std::endl;
+
+    std::cout << "_____________" << std::endl;
+
+    for (int i = 0; i < 3; i++) {
+        std::cout << "|";
+        for (int j = 0; j < 3; j++) {
+            if (pos.getX() == i && pos.getY() == j)
+                std::cout << " X |";
+            else
+                std::cout << "   |";
+        }
+
+        std::cout << std::endl << "_____________" << std::endl;
+    }
+    std::cout << "Побед: " << score[0] << std::endl;
+    std::cout << "Поражений: " << score[1] << std::endl;
+    std::cout << "Ничьих: " << score[2] << std::endl;
 }
 
 int main() {
     TreeNode root = TreeNode();
-    std::vector<PlayField::CellPos> startPoses;
-
-    std::cout << "Игровое поле и соотвествующие координаты:   " << std::endl <<
-    "_(0,0)_|_(0,1)_|_(0,2)_\n_(1,0)_|_(1,1)_|_(1,2)\n_(2,0)_|_(2,1)_|_(2,2)_" << std::endl;
-
-    for(int i = 0; i < 3; i++)
-        for (int j = 0; j < 3; ++j) {
-            PlayField::CellPos pos = PlayField::CellPos(i, j);
-            root.addChild(pos);
-            startPoses.push_back(pos);
-        }
+    std::vector<PlayField::CellPos> startPoses = root.value().getEmptyCells();
 
     for (int i = 0; i < 9; i++) {
-        int results[3] = {0, 0, 0};
-        inspectTree((root[i]), results);
-        std::cout << "Для первого хода на координаты (" << startPoses.at(i).getX() << ", "
-        << startPoses.at(i).getY() << ") :" << std::endl;
-        std::cout << "Побед: " << results[0] << std::endl;
-        std::cout << "Поражений: " << results[1] << std::endl;
-        std::cout << "Ничьих: " << results[2] << std::endl;
+        Score score = Score();
+        auto child = TreeNode(&root, root.value().makeMove(startPoses[i]));
+        root.addChild(&child);
+        inspectTree(root[i], score);
+        printPlayField(startPoses[i], score);
     }
 
     return  0;

@@ -1,38 +1,35 @@
-//
-// Created by Михаил on 28.03.2020.
-//
-
 #ifndef NOUGHTS_AND_CROSSES_TREENODE_H
 #define NOUGHTS_AND_CROSSES_TREENODE_H
 
 #include "PlayField.h"
 #include <vector>
 
+//
+// Created by Михаил on 28.03.2020.
+//
+
 class TreeNode{
 public:
-    TreeNode();
+    TreeNode() = default;
+
+    TreeNode(TreeNode *parent, PlayField playField);
 
     bool isTerminal();
 
-    void addChild(PlayField::CellPos pos);
+    void addChild(TreeNode* child);
 
-    int childCount();
+    int childCount() const;
 
-    const PlayField::FieldStatus value();
+    const PlayField& value();
 
     TreeNode& operator[](int index);
 
-    /// Данная функция добавлена по необходимости определять в какую клетку я могу сходить.
-    std::vector<PlayField::CellPos*> getEmptyCells();
-
 private:
+    int childQty() const;
+
     const PlayField playField;
-    TreeNode *previousNode;
-    std::vector<TreeNode*> nextNodes;
-
-    int childQty();
-
-    TreeNode(TreeNode *previous, PlayField playField);
+    TreeNode *parent = nullptr;
+    std::vector<TreeNode*> children;
 };
 
 #endif //NOUGHTS_AND_CROSSES_TREENODE_H

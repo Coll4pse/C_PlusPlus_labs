@@ -1,43 +1,33 @@
-//
-// Created by Михаил on 28.03.2020.
-//
 #include "TreeNode.h"
 #include "PlayField.h"
 
-TreeNode::TreeNode(): playField(PlayField()){
-    previousNode = nullptr;
-}
+//
+// Created by Михаил on 28.03.2020.
+//
 
-TreeNode::TreeNode(TreeNode *previous, PlayField playField): playField(playField) {
-    previousNode = previous;
-}
+TreeNode::TreeNode(TreeNode *parent, PlayField playField): playField(playField), parent(parent) {}
 
 bool TreeNode::isTerminal() {
-    return childQty() == 0 && childCount() == 0;
+    return value().checkFieldStatus() != PlayField::fsNormal;
 }
 
-int TreeNode::childQty() {
-    return value() == PlayField::fsNormal ? (int)playField.getEmptyCells().size() - childCount() : 0;
+int TreeNode::childQty() const {
+    return parent == nullptr ? 9 : parent->childQty() - 1;
 }
 
-void TreeNode::addChild(PlayField::CellPos pos) {
-    assert(childQty() != 0);
-    auto newNode = new TreeNode(this, playField.makeMove(&pos));
-    nextNodes.push_back(newNode);
+void TreeNode::addChild(TreeNode* child) {
+    assert(childQty() > childCount());
+    children.push_back(child);
 }
 
 TreeNode& TreeNode::operator[](int index) {
-    return *nextNodes.at(index);
+    return *children[index];
 }
 
-int TreeNode::childCount() {
-    return nextNodes.size();
+int TreeNode::childCount() const {
+    return children.size();
 }
 
-const PlayField::FieldStatus TreeNode::value() {
-    return playField.checkFieldStatus();
-}
-
-std::vector<PlayField::CellPos*> TreeNode::getEmptyCells() {
-    return playField.getEmptyCells();
+const PlayField& TreeNode::value() {
+    return playField;
 }

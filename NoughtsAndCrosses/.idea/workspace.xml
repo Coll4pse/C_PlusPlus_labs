@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="Noughts_and_Crosses" targetName="Noughts_and_Crosses" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="894d439a-226d-4b64-8ab4-0036fcb552db" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FavoritesManager">
+    <favorites_list name="Noughts and Crosses" />
+  </component>
+  <component name="ProjectId" id="1Zhp4pVEfy0MqBdkL1OS9WLCeth" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Noughts_and_Crosses" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Noughts_and_Crosses" TARGET_NAME="Noughts_and_Crosses" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Noughts_and_Crosses" RUN_TARGET_NAME="Noughts_and_Crosses">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="894d439a-226d-4b64-8ab4-0036fcb552db" name="Default Changelist" comment="" />
+      <created>1585300991949</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585300991949</updated>
+      <workItem from="1585300993158" duration="4401000" />
+      <workItem from="1585382662294" duration="20501000" />
+      <workItem from="1585475030593" duration="20465000" />
+      <workItem from="1585586376566" duration="1045000" />
+      <workItem from="1585908774094" duration="9856000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585481889822">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585481889822" />
+    <state width="494" height="466" key="DebuggerActiveHint" timestamp="1585491418023">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="494" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1585491418023" />
+    <state x="547" y="284" key="FileChooserDialogImpl" timestamp="1585304739091">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="547" y="284" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585304739091" />
+    <state width="1878" height="343" key="GridCell.Tab.0.bottom" timestamp="1585918645013">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1878" height="343" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585918645013" />
+    <state width="1878" height="343" key="GridCell.Tab.0.center" timestamp="1585918645013">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1878" height="343" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585918645013" />
+    <state width="1878" height="343" key="GridCell.Tab.0.left" timestamp="1585918645013">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1878" height="343" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585918645013" />
+    <state width="1878" height="343" key="GridCell.Tab.0.right" timestamp="1585918645013">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1878" height="343" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585918645013" />
+    <state width="1878" height="343" key="GridCell.Tab.1.bottom" timestamp="1585918645013">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1878" height="343" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585918645013" />
+    <state width="1878" height="343" key="GridCell.Tab.1.center" timestamp="1585918645013">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1878" height="343" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585918645013" />
+    <state width="1878" height="343" key="GridCell.Tab.1.left" timestamp="1585918645013">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1878" height="343" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585918645013" />
+    <state width="1878" height="343" key="GridCell.Tab.1.right" timestamp="1585918645013">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1878" height="343" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585918645013" />
+    <state x="298" y="161" key="SettingsEditor" timestamp="1585486116043">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="298" y="161" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585486116043" />
+    <state x="614" y="342" key="com.intellij.ide.util.TipDialog" timestamp="1585908826651">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="614" y="342" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585908826651" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>57</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

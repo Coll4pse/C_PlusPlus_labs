@@ -1,10 +1,5 @@
-//
-// Created by Михаил on 28.03.2020.
-//
-#include <cstring>
-#include <cassert>
-#include <cstdlib>
 #include "PlayField.h"
+#include <cassert>
 
 PlayField::PlayField() {
     for (int i = 0; i < 3; i++)
@@ -12,26 +7,22 @@ PlayField::PlayField() {
             cells[i][j] = csEmpty;
 }
 
-PlayField::CellStatus PlayField::operator[](CellPos *pos) const {
-    return cells[(*pos).getX()][(*pos).getY()];
+PlayField::CellStatus PlayField::operator[](const CellPos pos) const {
+    return cells[pos.getX()][pos.getY()];
 }
 
-PlayField PlayField::operator+(PlayField::CellPos *pos) const {
-    PlayField newField = PlayField();
-
-    for(int i = 0; i < 3; i++)
-        for (int j = 0; j < 3; j++)
-            newField.cells[i][j] = cells[i][j];
-    newField.cells[(*pos).getX()][(*pos).getY()] = getEmptyCells().size() % 2 == 0 ? csNought : csCross;
+PlayField PlayField::operator+(const PlayField::CellPos pos) const {
+    auto newField = PlayField(*this);
+    newField.cells[pos.getX()][pos.getY()] = getEmptyCells().size() % 2 == 0 ? csNought : csCross;
     return newField;
 }
 
-std::vector<PlayField::CellPos*> PlayField::getEmptyCells() const {
-    auto result = std::vector<PlayField::CellPos*>();
+std::vector<PlayField::CellPos> PlayField::getEmptyCells() const {
+    auto result = std::vector<PlayField::CellPos>();
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)
             if (cells[i][j] == csEmpty)
-                result.push_back(new CellPos(i, j));
+                result.emplace_back(i, j);
     return result;
 }
 
@@ -75,8 +66,8 @@ PlayField::FieldStatus PlayField::checkFieldStatus() const {
             isNoughtWin = true;
     }
 
-    if (((cells[0][0] == cells[1][1] && cells[1][1] == cells[2][2])  ||
-    (cells[0][2] == cells[1][1] && cells[1][1] == cells[2][0])) && cells[1][1] != csEmpty)
+    if (cells[1][1] != csEmpty && ((cells[0][0] == cells[1][1] && cells[1][1] == cells[2][2])  ||
+    (cells[0][2] == cells[1][1] && cells[1][1] == cells[2][0])))
         cells[1][1] == csCross ? isCrossWin = true : isNoughtWin = true;
 
     if (isCrossWin && isNoughtWin)
@@ -91,7 +82,7 @@ PlayField::FieldStatus PlayField::checkFieldStatus() const {
         return fsNormal;
 }
 
-PlayField PlayField::makeMove(PlayField::CellPos *pos) const {
+PlayField PlayField::makeMove(const PlayField::CellPos pos) const {
     assert(checkFieldStatus() == fsNormal || (*this)[pos] == csEmpty);
-    return this->operator+(pos);
+    return (*this) + pos;
 }
