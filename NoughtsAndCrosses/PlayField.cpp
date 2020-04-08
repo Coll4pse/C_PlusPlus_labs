@@ -8,22 +8,8 @@ PlayField::CellStatus PlayField::operator[](const CellPos pos) const {
 PlayField PlayField::operator+(const PlayField::CellPos pos) const {
     assert((*this)[pos] == csEmpty);
 
-    Player nextMovedPlayer = pNotInitialized;
-
-    switch (this->movedPlayer){
-        case pNotInitialized:
-            nextMovedPlayer = pCrosses;
-            break;
-        case pCrosses:
-            nextMovedPlayer = pNoughts;
-            break;
-        case pNoughts:
-            nextMovedPlayer = pCrosses;
-            break;
-    }
-
-    auto newField = PlayField(*this, nextMovedPlayer);
-    newField.cells[pos.getX()][pos.getY()] = (nextMovedPlayer == pCrosses ? csCross : csNought);
+    auto newField = PlayField(*this);
+    newField.cells[pos.getX()][pos.getY()] = nextMove();
     return newField;
 }
 
@@ -95,4 +81,26 @@ PlayField::FieldStatus PlayField::checkFieldStatus() const {
 PlayField PlayField::makeMove(const PlayField::CellPos pos) const {
     assert(checkFieldStatus() == fsNormal || (*this)[pos] == csEmpty);
     return (*this) + pos;
+}
+
+PlayField::CellStatus PlayField::nextMove() const {
+    FieldStatus status = checkFieldStatus();
+    assert(status != fsInvalid && status != fsNoughtsWin && status != fsCrossesWin && status != fsDraw);
+
+    int crossesCount = 0, noughtsCount = 0;
+
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++) {
+            if (cells[i][j] == csCross)
+                crossesCount++;
+            else if (cells[i][j] == csNought)
+                noughtsCount++;
+            else
+                continue;
+        }
+
+    if (crossesCount == 0 && noughtsCount == 0)
+        return csCross;
+
+    return (crossesCount - noughtsCount == 0 ? csCross : csNought);
 }

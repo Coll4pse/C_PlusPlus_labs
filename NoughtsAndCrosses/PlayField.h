@@ -47,25 +47,13 @@ public:
         fsDraw
     };
 
-    /// Энум добавленный для понятного отображения ходящего/сходившего
-    enum Player {
-        pCrosses,
-        pNoughts,
-        pNotInitialized
-    };
-
     FieldStatus checkFieldStatus() const;
 
     PlayField makeMove(CellPos pos) const;
 
     PlayField() = default;
 
-    /// Добавлено, чтобы при копировании инициализировалось конст поле, показывающее кто сходил в данном поле
-    PlayField(PlayField const &copiedPF, Player movedPlayer): movedPlayer(movedPlayer) {
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
-                cells[i][j] = copiedPF[CellPos(i, j)];
-    };
+    CellStatus nextMove() const;
 
 private:
     PlayField operator+(CellPos pos) const;
@@ -75,9 +63,6 @@ private:
             {csEmpty, csEmpty, csEmpty},
             {csEmpty, csEmpty, csEmpty}
     };
-
-    /// Добавлено по необходимости определять кто сходит следующий
-    const Player movedPlayer = pNotInitialized;
 };
 
 #endif //NOUGHTS_AND_CROSSES_PLAYFIELD_H
