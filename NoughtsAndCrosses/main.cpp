@@ -30,7 +30,6 @@ void inspectTree(TreeNode& node, Score &score) {
         auto child = new TreeNode(node.value().makeMove(emptyPoses[i]));
         node.addChild(child);
         inspectTree(node[i], score);
-        delete child;
     }
 }
 
@@ -65,11 +64,8 @@ void startTreeInspection()
         auto child = new TreeNode(root.value().makeMove(startPoses[i]));
         root.addChild(child);
         inspectTree(root[i], score);
-        delete child;
         printPlayField(startPoses[i], score);
     }
-
-    delete &root;
 }
 
 int main() {

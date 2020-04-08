@@ -6,8 +6,24 @@ PlayField::CellStatus PlayField::operator[](const CellPos pos) const {
 }
 
 PlayField PlayField::operator+(const PlayField::CellPos pos) const {
-    auto newField = PlayField(*this);
-    newField.cells[pos.getX()][pos.getY()] = getEmptyCells().size() % 2 == 0 ? csNought : csCross;
+    assert((*this)[pos] == csEmpty);
+
+    Player nextMovedPlayer = pNotInitialized;
+
+    switch (this->movedPlayer){
+        case pNotInitialized:
+            nextMovedPlayer = pCrosses;
+            break;
+        case pCrosses:
+            nextMovedPlayer = pNoughts;
+            break;
+        case pNoughts:
+            nextMovedPlayer = pCrosses;
+            break;
+    }
+
+    auto newField = PlayField(*this, nextMovedPlayer);
+    newField.cells[pos.getX()][pos.getY()] = (nextMovedPlayer == pCrosses ? csCross : csNought);
     return newField;
 }
 

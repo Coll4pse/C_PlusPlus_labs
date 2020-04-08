@@ -7,6 +7,11 @@
 
 TreeNode::TreeNode(PlayField playField): playField(playField) {}
 
+TreeNode::~TreeNode() {
+    for (auto node: children)
+        delete node;
+}
+
 bool TreeNode::isTerminal() const {
     PlayField::FieldStatus status = value().checkFieldStatus();
     assert(status != PlayField::fsInvalid);

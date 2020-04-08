@@ -14,6 +14,8 @@ public:
 
     TreeNode(PlayField playField);
 
+    ~TreeNode();
+
     bool isTerminal() const;
 
     void addChild(TreeNode* child);
