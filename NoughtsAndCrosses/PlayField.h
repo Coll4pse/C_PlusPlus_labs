@@ -1,7 +1,6 @@
 #ifndef NOUGHTS_AND_CROSSES_PLAYFIELD_H
 #define NOUGHTS_AND_CROSSES_PLAYFIELD_H
 
-#include <cassert>
 #include <vector>
 
 //
@@ -14,14 +13,10 @@ public:
     public:
         CellPos() = delete;
 
-        CellPos(int x, int y) {
-            assert(x >= 0 && x <= 2 && y >= 0 && y <= 2);
-            m_x = x;
-            m_y = y;
-        }
+        CellPos(int x, int y);
 
-        int getX() const { return  m_x;}
-        int getY() const { return  m_y;}
+        int getX() const;
+        int getY() const;
 
     private:
         int m_x = 0;
@@ -35,7 +30,7 @@ public:
         csNought
     };
 
-    CellStatus operator[](CellPos pos) const;
+    CellStatus operator[](const CellPos pos) const;
 
     std::vector<CellPos> getEmptyCells() const;
 
@@ -49,14 +44,14 @@ public:
 
     FieldStatus checkFieldStatus() const;
 
-    PlayField makeMove(CellPos pos) const;
+    PlayField makeMove(const CellPos pos) const;
 
     PlayField() = default;
 
     CellStatus nextMove() const;
 
 private:
-    PlayField operator+(CellPos pos) const;
+    PlayField operator+(const CellPos pos) const;
 
     CellStatus cells[3][3] = {
             {csEmpty, csEmpty, csEmpty},

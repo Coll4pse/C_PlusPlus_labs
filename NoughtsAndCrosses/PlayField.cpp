@@ -39,8 +39,6 @@ PlayField::FieldStatus PlayField::checkFieldStatus() const {
                     noughtCount++;
                     noughtCountInRow++;
                     break;
-                case csEmpty:
-                    break;
             }
             switch (cells[j][i])
             {
@@ -49,8 +47,6 @@ PlayField::FieldStatus PlayField::checkFieldStatus() const {
                     break;
                 case csNought:
                     noughtCountInCol++;
-                    break;
-                case csEmpty:
                     break;
             }
         }
@@ -95,12 +91,17 @@ PlayField::CellStatus PlayField::nextMove() const {
                 crossesCount++;
             else if (cells[i][j] == csNought)
                 noughtsCount++;
-            else
-                continue;
         }
-
-    if (crossesCount == 0 && noughtsCount == 0)
-        return csCross;
 
     return (crossesCount - noughtsCount == 0 ? csCross : csNought);
 }
+
+PlayField::CellPos::CellPos(int x, int y)  {
+    assert(x >= 0 && x <= 2 && y >= 0 && y <= 2);
+    m_x = x;
+    m_y = y;
+}
+
+int PlayField::CellPos::getX() const  { return  m_x; }
+
+int PlayField::CellPos::getY() const { return m_y; }

@@ -1,11 +1,13 @@
 #include "TreeNode.h"
 #include "PlayField.h"
 
+#include <cassert>
+
 //
 // Created by Михаил on 28.03.2020.
 //
 
-TreeNode::TreeNode(PlayField playField): playField(playField) {}
+TreeNode::TreeNode(const PlayField playField): playField(playField) {}
 
 TreeNode::~TreeNode() {
     for (auto node: children)
@@ -28,7 +30,7 @@ void TreeNode::addChild(TreeNode* child) {
     children.push_back(child);
 }
 
-TreeNode& TreeNode::operator[](int index) const{
+TreeNode& TreeNode::operator[](const int index) const{
     return *children[index];
 }
 

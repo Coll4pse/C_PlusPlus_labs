@@ -12,7 +12,7 @@ class TreeNode{
 public:
     TreeNode() = default;
 
-    TreeNode(PlayField playField);
+    TreeNode(const PlayField playField);
 
     ~TreeNode();
 
@@ -24,7 +24,7 @@ public:
 
     const PlayField& value() const;
 
-    TreeNode& operator[](int index) const;
+    TreeNode& operator[](const int index) const;
 
 private:
     int childQty() const;

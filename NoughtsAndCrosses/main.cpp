@@ -1,7 +1,9 @@
-#include <iostream>
 #include "TreeNode.h"
 #include "PlayField.h"
 #include "Score.h"
+
+#include <iostream>
+#include <cassert>
 
 /// Степанов М. О. РИ-280017
 
@@ -59,8 +61,8 @@ void startTreeInspection()
     auto root = TreeNode();
     std::vector<PlayField::CellPos> startPoses = root.value().getEmptyCells();
 
-    for (int i = 0; i < 9; i++) {
-        Score score = Score();
+    for (int i = 0; i < startPoses.size(); i++) {
+        Score score;
         auto child = new TreeNode(root.value().makeMove(startPoses[i]));
         root.addChild(child);
         inspectTree(root[i], score);

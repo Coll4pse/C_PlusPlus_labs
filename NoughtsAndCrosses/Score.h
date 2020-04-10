@@ -3,8 +3,6 @@
 
 #endif //NOUGHTS_AND_CROSSES_SCORE_H
 
-#include <cassert>
-
 //
 // Created by Михаил on 03.04.2020.
 //
