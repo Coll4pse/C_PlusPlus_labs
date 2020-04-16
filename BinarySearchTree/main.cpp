@@ -4,18 +4,13 @@
 
 // Степанов М. О. РИ-280017
 
-void insertMiddleElement(BinaryTree& tree, const int* arrStart, int length){
-    if (length == 1)
-        tree.insert(*arrStart);
-    else if (length == 2) {
-        tree.insert(*arrStart);
-        tree.insert(*(arrStart + 1));
-    }
-    else {
-        tree.insert(*(arrStart + length / 2));
-        insertMiddleElement(tree, arrStart, length / 2 );
-        insertMiddleElement(tree, arrStart + length / 2 + 1, length % 2 == 0 ? length / 2 - 1 : length / 2);
-    }
+void insertMiddleElement(BinaryTree& tree, const int* arrStart, int length) {
+    if (length == 0)
+        return;
+
+    tree.insert(*(arrStart + length / 2));
+    insertMiddleElement(tree, arrStart, length / 2);
+    insertMiddleElement(tree, arrStart + length / 2 + 1, length % 2 == 0 ? length / 2 - 1 : length / 2);
 }
 
 BinaryTree* createMinimalBST(const int* arrStart, int endIndex) {
