@@ -4,20 +4,23 @@
 
 // Степанов М. О. РИ-280017
 
-BinaryTree* createMinimalBST(const int* arrStart, int endIndex) {
-    int middleElement = *(arrStart + endIndex / 2);
-
-    auto tree = new BinaryTree(middleElement);
-
-    for (int i = 0; i <= endIndex; i++){
-        int element = *(arrStart + i);
-
-        if (element == middleElement)
-            continue;
-
-        tree->insert(element);
+void insertMiddleElement(BinaryTree& tree, const int* arrStart, int length){
+    if (length == 1)
+        tree.insert(*arrStart);
+    else if (length == 2) {
+        tree.insert(*arrStart);
+        tree.insert(*(arrStart + 1));
     }
+    else {
+        tree.insert(*(arrStart + length / 2));
+        insertMiddleElement(tree, arrStart, length / 2 );
+        insertMiddleElement(tree, arrStart + length / 2 + 1, length % 2 == 0 ? length / 2 - 1 : length / 2);
+    }
+}
 
+BinaryTree* createMinimalBST(const int* arrStart, int endIndex) {
+    auto tree = new BinaryTree();
+    insertMiddleElement(*tree, arrStart, endIndex + 1);
     return tree;
 }
 
