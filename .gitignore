@@ -1,6 +1,8 @@
 # Created by https://www.gitignore.io/api/c++,clion,visualstudio,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=c++,clion,visualstudio,visualstudiocode
 
+/.idea
+
 ### C++ ###
 # Prerequisites
 *.d
