@@ -29,8 +29,7 @@ void inspectTree(TreeNode& node, Score &score) {
 
     for (int i = 0; i < emptyPoses.size(); i++)
     {
-        auto child = new TreeNode(node.value().makeMove(emptyPoses[i]));
-        node.addChild(child);
+        node.addChild(new TreeNode(node.value().makeMove(emptyPoses[i])));
         inspectTree(node[i], score);
     }
 }
@@ -63,8 +62,7 @@ void startTreeInspection()
 
     for (int i = 0; i < startPoses.size(); i++) {
         Score score;
-        auto child = new TreeNode(root.value().makeMove(startPoses[i]));
-        root.addChild(child);
+        root.addChild(new TreeNode(root.value().makeMove(startPoses[i])));
         inspectTree(root[i], score);
         printPlayField(startPoses[i], score);
     }

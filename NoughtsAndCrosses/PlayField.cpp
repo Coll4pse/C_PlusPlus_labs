@@ -7,16 +7,15 @@ PlayField::CellStatus PlayField::operator[](const CellPos pos) const {
 
 PlayField PlayField::operator+(const PlayField::CellPos pos) const {
     assert((*this)[pos] == csEmpty);
-
-    auto newField = PlayField(*this);
+    PlayField newField(*this);
     newField.cells[pos.getX()][pos.getY()] = nextMove();
     return newField;
 }
 
 std::vector<PlayField::CellPos> PlayField::getEmptyCells() const {
     auto result = std::vector<PlayField::CellPos>();
-    for (int i = 0; i < 3; i++)
-        for (int j = 0; j < 3; j++)
+    for (int i = 0; i < m_fieldDim; i++)
+        for (int j = 0; j < m_fieldDim; j++)
             if (cells[i][j] == csEmpty)
                 result.emplace_back(i, j);
     return result;
@@ -26,10 +25,10 @@ PlayField::FieldStatus PlayField::checkFieldStatus() const {
     int crossCount = 0, noughtCount = 0;
     bool isCrossWin = false, isNoughtWin = false;
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < m_fieldDim; i++) {
         int crossCountInRow = 0, crossCountInCol = 0, noughtCountInRow = 0, noughtCountInCol = 0;
 
-        for (int j = 0; j < 3; j++) {
+        for (int j = 0; j < m_fieldDim; j++) {
             switch (cells[i][j]){
                 case csCross:
                     crossCount++;
@@ -75,7 +74,9 @@ PlayField::FieldStatus PlayField::checkFieldStatus() const {
 }
 
 PlayField PlayField::makeMove(const PlayField::CellPos pos) const {
-    assert(checkFieldStatus() == fsNormal || (*this)[pos] == csEmpty);
+    FieldStatus status = checkFieldStatus();
+    assert((status != fsInvalid && status != fsNoughtsWin && status != fsCrossesWin && status != fsDraw)
+        || (*this)[pos] == csEmpty);
     return (*this) + pos;
 }
 
@@ -85,8 +86,8 @@ PlayField::CellStatus PlayField::nextMove() const {
 
     int crossesCount = 0, noughtsCount = 0;
 
-    for (int i = 0; i < 3; i++)
-        for (int j = 0; j < 3; j++) {
+    for (int i = 0; i < m_fieldDim; i++)
+        for (int j = 0; j < m_fieldDim; j++) {
             if (cells[i][j] == csCross)
                 crossesCount++;
             else if (cells[i][j] == csNought)
