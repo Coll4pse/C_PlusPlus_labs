@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include "BinaryTree.h"
 
-// Степанов М. О.
+// Степанов М. О. РИ-280017
 
 BinaryTree* createMinimalBST(const int* arrStart, int endIndex) {
     int middleElement = *(arrStart + endIndex / 2);
