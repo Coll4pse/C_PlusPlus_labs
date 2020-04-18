@@ -15,9 +15,9 @@ public:
 
     TreeNode* search(const int value) const { return search(value, m_root); }
 private:
-    void insert(const int value, TreeNode* node);
+    void insert(const int value, TreeNode* const node);
 
-    TreeNode* search(const int value, TreeNode* node) const;
+    TreeNode* search(const int value, TreeNode* const node) const;
 
     TreeNode* m_root = nullptr;
 };

@@ -8,8 +8,6 @@ public:
 
     TreeNode(const int value): m_value(value) {}
 
-    TreeNode(const int value, TreeNode* previousNode): TreeNode(value) { m_previousNode = previousNode; }
-
     ~TreeNode() {
         delete m_leftNode;
         delete m_rightNode;
@@ -17,14 +15,13 @@ public:
 
     int value() const { return m_value; }
 
-    TreeNode* getLeftNode() { return m_leftNode; }
+    TreeNode* getLeftNode() const { return m_leftNode; }
     void setLeftNode(TreeNode* node) { m_leftNode = node; }
 
-    TreeNode* getRightNode() { return m_rightNode; }
+    TreeNode* getRightNode() const { return m_rightNode; }
     void setRightNode(TreeNode* node) { m_rightNode = node; }
 private:
     const int m_value = 0;
-    TreeNode* m_previousNode = nullptr;
     TreeNode* m_leftNode = nullptr;
     TreeNode* m_rightNode = nullptr;
 };
