@@ -3,6 +3,8 @@
 #include <chrono>
 #include "ArrayUtil.h"
 
+/// Степанов М. О. РИ-280017 ///
+
 using namespace std;
 
 constexpr int N = 100;
