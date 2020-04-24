@@ -16,7 +16,7 @@ string whichMessage(const int index) {
         return "первое вхождение значения найдено по индексу " + to_string(index) + ".";
 }
 
-void sortsTesting(void sortFunc(int*, const int, const int)) {
+void sortsTesting(void sortFunc(int*, int, int)) {
     int array[N];
     ArrayUtil::generateArray(array, 0, N - 1);
     ArrayUtil::printArray(array, 0, N / 2 -1);
@@ -42,7 +42,7 @@ void searchesTesting(const int value) {
          << "Значение: " << value << endl << endl;
 }
 
-int getRuntime(int searchFunc(const int* const, int, int, const int), const bool isBSearch, const int value) {
+int getRuntime(int searchFunc(const int* const, int, int, int), bool isBSearch, int value) {
     int array[N * N];
     ArrayUtil::generateArray(array, 0, N * N - 1);
 
