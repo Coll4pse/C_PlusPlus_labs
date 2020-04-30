@@ -4,6 +4,9 @@
 #include "TreeNode.h"
 #include <vector>
 
+/// Метода selectPlayer нет, т.к. непонятно его применение, кто есть бот можно определить из того кто игрок
+/// Собственно в файле с ТЗ в main в конструктор как раз таки подается игрок
+
 class XOPlayer {
 public:
     XOPlayer(TreeNode& tree, PlayField::CellStatus player): currentNode(&tree), player(player),
