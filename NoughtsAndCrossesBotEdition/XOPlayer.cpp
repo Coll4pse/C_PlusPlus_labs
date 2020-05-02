@@ -1,5 +1,7 @@
 #include "XOPlayer.h"
 #include <cassert>
+#include <vector>
+#include <ctime>
 
 void XOPlayer::makeMove(const PlayField::CellPos pos) {
     for (int i = 0; i < currentNode->childCount(); i++) {
@@ -14,20 +16,27 @@ void XOPlayer::makeMove(const PlayField::CellPos pos) {
 }
 
 void XOPlayer::makeMove() {
-    int max = 0;
-    TreeNode* maxChild;
+    int maxSum = 0;
+    std::vector<TreeNode*> maxChildren;
+
+    srand(time(nullptr));
+
     for (int i = 0; i < currentNode->childCount(); i++) {
         TreeNode& child = (*currentNode)[i];
 
         int sum = (bot == PlayField::csCross ? child.getScore().CrossesWin : child.getScore().NoughtsWin) +
                 child.getScore().Draws;
 
-        if (sum > max) {
-            max = sum;
-            maxChild = &child;
+        if (sum == maxSum) {
+            maxChildren.push_back(&child);
+        }
+        if (sum > maxSum) {
+            maxSum = sum;
+            maxChildren.clear();
+            maxChildren.push_back(&child);
         }
     }
-    currentNode = maxChild;
+    currentNode = maxChildren[rand() % maxChildren.size()];
 }
 
 PlayField::FieldStatus XOPlayer::fieldStatus() const {
