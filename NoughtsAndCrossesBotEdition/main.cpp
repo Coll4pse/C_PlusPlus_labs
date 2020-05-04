@@ -77,34 +77,35 @@ int main() {
 
     bool isPlayerMove = sel_player == 0;
     XOPlayer player(root, isPlayerMove ? PlayField::csCross : PlayField::csNought);
-    while (player.fieldStatus() == PlayField::fsNormal) {
-        if (isPlayerMove) {
-            std::cout << std::endl << "Select cell (0 - 2, 0 - 2)" << std::endl;
-            int x, y;
-            std::cin >> x >> y;
-            auto pos = PlayField::CellPos(x, y);
-            player.makeMove(pos);
+    try {
+        while (player.fieldStatus() == PlayField::fsNormal) {
+            if (isPlayerMove) {
+                std::cout << std::endl << "Select cell (0 - 2, 0 - 2)" << std::endl;
+                int x, y;
+                std::cin >> x >> y;
+                auto pos = PlayField::CellPos(x, y);
+                player.makeMove(pos);
+            } else {
+                player.makeMove();
+            }
+            printPlayField(player.currentState());
+            isPlayerMove = !isPlayerMove;
         }
-        else {
-            player.makeMove();
-        }
-        printPlayField(player.currentState());
-        isPlayerMove = !isPlayerMove;
-    }
 
-    std::cout << std::endl;
-    switch (player.fieldStatus()) {
-        case PlayField::fsInvalid:
-            std::cout << "Invalid move";
-            break;
-        case PlayField::fsCrossesWin:
-            std::cout << "Crosses win!";
-            break;
-        case PlayField::fsNoughtsWin:
-            std::cout << "Noughts win!";
-            break;
-        case PlayField::fsDraw:
-            std::cout << "It's draw!";
-            break;
+        std::cout << std::endl;
+        switch (player.fieldStatus()) {
+            case PlayField::fsCrossesWin:
+                std::cout << "Crosses win!";
+                break;
+            case PlayField::fsNoughtsWin:
+                std::cout << "Noughts win!";
+                break;
+            case PlayField::fsDraw:
+                std::cout << "It's draw!";
+                break;
+        }
+    }
+    catch (const char* msg) {
+        std::cout << std::endl << msg;
     }
 }

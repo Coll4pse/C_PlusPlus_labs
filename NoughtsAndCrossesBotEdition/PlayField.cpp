@@ -98,7 +98,8 @@ PlayField::CellStatus PlayField::nextMove() const {
 }
 
 PlayField::CellPos::CellPos(int x, int y)  {
-    assert(x >= 0 && x <= 2 && y >= 0 && y <= 2);
+    if (!(x >= 0 && x <= 2 && y >= 0 && y <= 2))
+        throw "Invalid position!";
     m_x = x;
     m_y = y;
 }

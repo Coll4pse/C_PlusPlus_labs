@@ -1,5 +1,4 @@
 #include "XOPlayer.h"
-#include <cassert>
 #include <vector>
 #include <ctime>
 
@@ -12,7 +11,7 @@ void XOPlayer::makeMove(const PlayField::CellPos pos) {
             return;
         }
     }
-    assert(false);
+    throw "Invalid move!";
 }
 
 void XOPlayer::makeMove() {
