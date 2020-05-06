@@ -21,7 +21,7 @@ bool TreeNode::isTerminal() const {
 }
 
 int TreeNode::childQty() const {
-    return (parent ? parent->childQty()-1 : 9);
+    return (parent ? parent->childQty() - 1 : PlayField::fieldDim * PlayField::fieldDim);
 }
 
 void TreeNode::addChild(TreeNode* child) {

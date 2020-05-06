@@ -9,20 +9,19 @@
 
 class XOPlayer {
 public:
-    XOPlayer(TreeNode& tree, PlayField::CellStatus player): currentNode(&tree), player(player),
-    bot(player == PlayField::csCross ? PlayField::csNought : PlayField::csCross) {};
+    XOPlayer(TreeNode& tree, PlayField::CellStatus player): solveTree(tree), currentNode(&solveTree),
+    player(player), bot(player == PlayField::csCross ? PlayField::csNought : PlayField::csCross) {};
 
     void makeMove(const PlayField::CellPos pos);
     void makeMove();
     const PlayField currentState() const;
     PlayField::FieldStatus fieldStatus() const;
-private:
-    bool containsPlayerMove(const PlayField::CellPos pos) const;
 
+private:
+    const TreeNode& solveTree;
     const TreeNode* currentNode;
     const PlayField::CellStatus player;
     const PlayField::CellStatus bot;
-    std::vector<PlayField::CellPos> playerMoves;
 };
 
 

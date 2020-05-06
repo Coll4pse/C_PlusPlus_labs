@@ -9,13 +9,13 @@ void inspectTree(TreeNode& node) {
     if (node.isTerminal()) {
         switch (node.value().checkFieldStatus()) {
             case PlayField::fsCrossesWin:
-                node.addScore(Score {1, 0, 0});
+                node.addScore(TreeNode::Score {1, 0, 0});
                 break;
             case PlayField::fsNoughtsWin:
-                node.addScore(Score {0, 1, 0});
+                node.addScore(TreeNode::Score {0, 1, 0});
                 break;
             case PlayField::fsDraw:
-                node.addScore(Score {0, 0, 1});
+                node.addScore(TreeNode::Score {0, 0, 1});
                 break;
             default:
                 assert(false);

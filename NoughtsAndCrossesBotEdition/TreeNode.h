@@ -3,7 +3,6 @@
 
 #include "PlayField.h"
 #include <vector>
-#include "Score.h"
 
 //
 // Created by Михаил on 28.03.2020.
@@ -11,6 +10,20 @@
 
 class TreeNode{
 public:
+    struct Score{
+        int totalScore() const { return CrossesWin + NoughtsWin + Draws; }
+
+        void operator+=(const Score otherScore) {
+            CrossesWin += otherScore.CrossesWin;
+            NoughtsWin += otherScore.NoughtsWin;
+            Draws += otherScore.Draws;
+        }
+
+        int CrossesWin = 0;
+        int NoughtsWin = 0;
+        int Draws = 0;
+    };
+
     TreeNode() = default;
 
     TreeNode(const PlayField playField);
@@ -29,12 +42,12 @@ public:
 
     const Score& getScore() const { return  possibleWays; }
 
-    void addScore(Score otherScore) { possibleWays + otherScore;}
+    void addScore(Score otherScore) { possibleWays += otherScore;}
 
 private:
     int childQty() const;
 
-    const PlayField playField = PlayField();
+    const PlayField playField;
 
     TreeNode *parent = nullptr;
 

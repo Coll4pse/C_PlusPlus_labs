@@ -50,6 +50,8 @@ public:
 
     CellStatus nextMove() const;
 
+    constexpr static int fieldDim = 3;
+
 private:
     PlayField operator+(const CellPos pos) const;
 
@@ -58,8 +60,6 @@ private:
             {csEmpty, csEmpty, csEmpty},
             {csEmpty, csEmpty, csEmpty}
     };
-
-    constexpr static int m_fieldDim = 3;
 };
 
 #endif //NOUGHTS_AND_CROSSES_PLAYFIELD_H
