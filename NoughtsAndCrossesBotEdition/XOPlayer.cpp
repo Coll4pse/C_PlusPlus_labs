@@ -5,9 +5,9 @@
 void XOPlayer::makeMove(const PlayField::CellPos pos) {
     if (currentNode->value()[pos] == PlayField::csEmpty) {
         for (int i = 0; i < currentNode->childCount(); i++) {
-            TreeNode *child = &(*currentNode)[i];
-            if (child->value()[pos] == player) {
-                currentNode = child;
+            TreeNode &child = (*currentNode)[i];
+            if (child.value()[pos] == player) {
+                currentNode = &child;
                 return;
             }
         }
@@ -22,18 +22,18 @@ void XOPlayer::makeMove() {
     srand(time(nullptr));
 
     for (int i = 0; i < currentNode->childCount(); i++) {
-        TreeNode* child = &(*currentNode)[i];
+        TreeNode& child = (*currentNode)[i];
 
-        float percentage = ((float)(bot == PlayField::csCross ? child->getScore().CrossesWin : child->getScore().NoughtsWin) +
-                child->getScore().Draws) / child->getScore().totalScore();
+        float percentage = ((float)(bot == PlayField::csCross ? child.getScore().CrossesWin : child.getScore().NoughtsWin) +
+                child.getScore().Draws) / child.getScore().totalScore();
 
         if (percentage == maxPercentage) {
-            maxChildren.push_back(child);
+            maxChildren.push_back(&child);
         }
         if (percentage > maxPercentage) {
             maxPercentage = percentage;
             maxChildren.clear();
-            maxChildren.push_back(child);
+            maxChildren.push_back(&child);
         }
     }
     currentNode = maxChildren[rand() % maxChildren.size()];

@@ -106,8 +106,8 @@ PlayField::CellStatus PlayField::nextMove() const {
         return csCross;
     else if (crossesCount - noughtsCount == 1)
         return csNought;
-    else
-        assert(false);
+
+    assert(false);
 }
 
 PlayField::CellPos::CellPos(int x, int y)  {
