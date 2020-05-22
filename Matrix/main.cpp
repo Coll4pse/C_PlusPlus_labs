@@ -30,15 +30,20 @@ int main() {
     Matrix2D m2a = d21, m2b = d22;
     Matrix3D m3a = d31, m3b = d32;
 
-    cout << m2a << endl << m2b << endl << m3a << endl << m3b << endl;
+    cout << "m2a = " << endl << m2a << endl
+    << "m2b = " << endl << m2b << endl
+    << "m3a = " << endl << m3a << endl
+    << "m3b = " << endl << m3b << endl;
 
     m2a += m2b;
     m3a += m3b;
 
-    cout << m2a << endl << m3a << endl;
+    cout << "m2a + m2b = " << endl << m2a << endl
+    << "m3a + m3b = " << endl << m3a << endl;
 
     m2b *= 10;
     m3b *= 10;
 
-    cout << m2b << endl << m3b << endl;
+    cout << "m2b * 10 = " << endl << m2b << endl
+    << "m3b * 10 = " << endl << m3b << endl;
 }

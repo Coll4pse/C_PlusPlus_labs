@@ -5,15 +5,10 @@
 class MatrixBase {
 public:
     MatrixBase() = delete;
-
     unsigned int size() const { return m_size; }
-
     virtual int element(unsigned int i, unsigned int j) const = 0;
-
     virtual int& element(unsigned int i, unsigned int j) = 0;
-
     void operator*=(int iMult);
-
     void operator+=(MatrixBase& iAdd) ;
 
 protected:
