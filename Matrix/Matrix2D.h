@@ -5,8 +5,7 @@
 
 class Matrix2D: public MatrixBase {
 public:
-    Matrix2D(): MatrixBase(m_size) {};
-    Matrix2D(int (&array)[2][2]);
+    Matrix2D();
     int element(unsigned int i, unsigned int j) const override;
     int& element(unsigned int i, unsigned int j) override;
 

@@ -5,30 +5,10 @@
 using namespace std;
 
 int main() {
-    int d21[2][2] = {
-            {1, 2},
-            {3, 4}
-    };
+    srand(time(0));
 
-    int d22[2][2] = {
-            {43, 24},
-            {82, 0}
-    };
-
-    int d31[3][3] = {
-        {1, 2, 3},
-        {4, 5, 6},
-        {7, 8, 9}
-    };
-
-    int d32[3][3] = {
-            {-4, 2, 9},
-            {0, 0, 0},
-            {24, 71, 1}
-    };
-
-    Matrix2D m2a = d21, m2b = d22;
-    Matrix3D m3a = d31, m3b = d32;
+    Matrix2D m2a, m2b;
+    Matrix3D m3a, m3b;
 
     cout << "m2a = " << endl << m2a << endl
     << "m2b = " << endl << m2b << endl
